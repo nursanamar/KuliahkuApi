@@ -20,6 +20,13 @@ class Jadwal extends MY_Controller
     $this->sendResponse($data);
     // var_dump(date('Y-m-d')+date('d')+1);
   }
+
+  public function updateData()
+  {
+    $data = $this->getBody();
+    $respon = $this->jadwal_model->update($data['id'],$data['data']);
+    $this->sendResponse($respon);
+  }
 }
 
 
