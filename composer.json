@@ -10,9 +10,16 @@
 		"irc": "irc://irc.freenode.net/codeigniter",
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Devristo/phpws"
+        }
+    ],
 	"require": {
 		"php": ">=5.3.7",
-		"cboden/ratchet": "^0.4.1"
+		"cboden/ratchet": "^0.4.1",
+		"devristo/phpws": "dev-master"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

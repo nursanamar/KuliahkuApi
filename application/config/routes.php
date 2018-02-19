@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login']['post'] = 'main/login';
 $route['jadwal']['get'] = 'jadwal/getData';
 $route['jadwal']['put'] = 'jadwal/updateData';
+$route['kuliah']['get'] = 'jadwal/getKuliahList';
+$route['kuliah/(:any)']['get'] = 'jadwal/KuliahById/$1';
