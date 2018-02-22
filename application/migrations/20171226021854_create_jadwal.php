@@ -25,9 +25,7 @@ class Migration_create_jadwal extends CI_Migration
 
         // Table attributes.
 
-        $attributes = array(
-            'ENGINE' => 'InnoDB',
-        );
+        
 
         // Create Table jadwal
         $this->dbforge->create_table("jadwal", TRUE, $attributes);

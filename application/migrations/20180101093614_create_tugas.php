@@ -38,9 +38,7 @@ class Migration_create_tugas extends CI_Migration
 
         // Table attributes.
 
-        $attributes = array(
-            'ENGINE' => 'InnoDB',
-        );
+        
 
         // Create Table tugas
         $this->dbforge->create_table("tugas", TRUE, $attributes);
