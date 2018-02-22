@@ -32,9 +32,7 @@ class Migration_create_dosen extends CI_Migration
 
         // Table attributes.
 
-        $attributes = array(
-            'ENGINE' => 'InnoDB',
-        );
+        
 
         // Create Table dosen
         $this->dbforge->create_table("dosen", TRUE, $attributes);

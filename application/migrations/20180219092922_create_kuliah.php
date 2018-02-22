@@ -51,9 +51,7 @@ class Migration_create_kuliah extends CI_Migration
 
         // Table attributes.
 
-        $attributes = array(
-            'ENGINE' => 'InnoDB',
-        );
+        
 
         // Create Table kuliah
         $this->dbforge->create_table("kuliah", TRUE, $attributes);
