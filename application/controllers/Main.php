@@ -53,6 +53,11 @@ class Main extends MY_Controller {
     $this->sendResponse($response);
 	}
 
+	public function welcome()
+	{
+		echo "<h1>KuliahKu API</h1>";
+	}
+
 	public function generator($table)
 	{
 		$data = $this->getBody();
