@@ -9,6 +9,7 @@ application/logs/*
 !application/logs/.htaccess
 
 cert
+data.json
 user_guide/*
 user_guide_src/build/*
 user_guide_src/cilexer/build/*
