@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends MY_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('Migration_lib',null,'migrat');
+
+	}
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -44,5 +51,17 @@ class Main extends MY_Controller {
       );
     }
     $this->sendResponse($response);
+	}
+
+	public function generator()
+	{
+		$this->load->library('migration');
+		$this->migration->version('20171225122227');
+		$this->migration->version('20171226015120');
+		$this->migration->version('20171226015622');
+		$this->migration->version('20171226021854');
+		$this->migration->version('20171226022016');
+		$this->migration->version('20180101093614');
+		$this->migration->version('20180219092922');
 	}
 }
