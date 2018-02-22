@@ -39,19 +39,19 @@ class Jadwal_model extends CI_Model
 
   public function kuliah_by_id($id)
   {
-    $this->db->select("`matkul`.`nama` AS 'matkul', `dosen`.`nama` AS 'dosen',`kuliah`.`hari`,`kuliah`.`jam` AS 'time',`kuliah`.`ruangan` AS 'room',`kuliah`.`status`,`tugas`.`idTugas`");
+    $this->db->select('matkul.nama AS matkul, dosen.nama AS dosen,kuliah.hari,kuliah.jam AS time,kuliah.ruangan AS room,kuliah.status,"tugas"."idTugas"');
     $this->db->from('kuliah');
     $this->db->join('matkul','kuliah.idMatkul=matkul.idMatkul','inner');
     $this->db->join('dosen','kuliah.idDosen=dosen.idDosen','inner');
     $this->db->join('tugas','kuliah.idTugas=tugas.idTugas','left');
-    $this->db->where('idKuliah',$id);
+    $this->db->where('"idKuliah"',$id);
 
     return $this->db->get()->result_array();
   }
 
   public function getKuliahList($user)
   {
-    $this->db->select("kuliah.idKuliah,matkul.nama,dosen.nama AS 'dosen'");
+    $this->db->select('"kuliah"."idKuliah",matkul.nama,dosen.nama AS dosen');
     $this->db->from('mahasiswa');
     $this->db->join('jadwal','mahasiswa.idJadwal=jadwal.idJadwal','inner');
     $this->db->join('kuliah','jadwal.idKuliah=kuliah.idKuliah','inner');
