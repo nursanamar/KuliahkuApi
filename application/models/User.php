@@ -20,6 +20,11 @@ class User extends CI_Model
 
     return (isset($result[0])) ? $result[0] : null;
   }
+
+  public function getData($table,$data)
+  {
+    return $this->db->insert_batch($table,$data);
+  }
 }
 
  ?>

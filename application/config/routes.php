@@ -57,4 +57,4 @@ $route['jadwal']['get'] = 'jadwal/getData';
 $route['jadwal']['put'] = 'jadwal/updateData';
 $route['kuliah']['get'] = 'jadwal/getKuliahList';
 $route['kuliah/(:any)']['get'] = 'jadwal/KuliahById/$1';
-$route['generator'] = 'main/generator';
+$route['generator/(:any)'] = 'main/generator/$1';
