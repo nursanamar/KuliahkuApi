@@ -14,7 +14,7 @@ class Jadwal_model extends CI_Model
     $this->db->join('jadwal','mahasiswa.idJadwal=jadwal.idJadwal','inner');
     $this->db->join('kuliah','jadwal.idKuliah=kuliah.idKuliah','inner');
     $this->db->join('matkul','kuliah.idMatkul=matkul.idMatkul','inner');
-    $this->db->join('dosen','"kuliah.idDosen"="dosen.idDosen"','inner');
+    $this->db->join('dosen','kuliah.idDosen=dosen.idDosen','inner');
     $this->db->where('nim',$id);
     $this->db->where('`kuliah`.`hari`',$hari);
     // $this->db->group_start()
