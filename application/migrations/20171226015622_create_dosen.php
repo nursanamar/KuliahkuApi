@@ -32,10 +32,10 @@ class Migration_create_dosen extends CI_Migration
 
         // Table attributes.
 
-        
+
 
         // Create Table dosen
-        $this->dbforge->create_table("dosen", TRUE, $attributes);
+        $this->dbforge->create_table("dosen", TRUE);
 
     }
 
