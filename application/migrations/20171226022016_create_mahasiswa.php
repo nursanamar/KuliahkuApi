@@ -32,10 +32,10 @@ class Migration_create_mahasiswa extends CI_Migration
 
         // Table attributes.
 
-        
+
 
         // Create Table mahasiswa
-        $this->dbforge->create_table("mahasiswa", TRUE, $attributes);
+        $this->dbforge->create_table("mahasiswa", TRUE);
 
     }
 

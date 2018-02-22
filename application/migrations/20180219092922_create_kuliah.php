@@ -51,10 +51,10 @@ class Migration_create_kuliah extends CI_Migration
 
         // Table attributes.
 
-        
+
 
         // Create Table kuliah
-        $this->dbforge->create_table("kuliah", TRUE, $attributes);
+        $this->dbforge->create_table("kuliah", TRUE);
 
     }
 

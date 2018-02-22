@@ -38,10 +38,10 @@ class Migration_create_tugas extends CI_Migration
 
         // Table attributes.
 
-        
+
 
         // Create Table tugas
-        $this->dbforge->create_table("tugas", TRUE, $attributes);
+        $this->dbforge->create_table("tugas", TRUE);
 
     }
 

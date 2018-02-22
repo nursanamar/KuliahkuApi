@@ -29,10 +29,10 @@ class Migration_create_user extends CI_Migration
 
         // Table attributes.
 
-        
+
 
         // Create Table user
-        $this->dbforge->create_table("user", TRUE, $attributes);
+        $this->dbforge->create_table("user", TRUE);
 
     }
 

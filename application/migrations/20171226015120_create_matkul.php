@@ -32,10 +32,10 @@ class Migration_create_matkul extends CI_Migration
 
         // Table attributes.
 
-        
+
 
         // Create Table matkul
-        $this->dbforge->create_table("matkul", TRUE, $attributes);
+        $this->dbforge->create_table("matkul", TRUE);
 
     }
 

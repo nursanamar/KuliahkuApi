@@ -25,10 +25,10 @@ class Migration_create_jadwal extends CI_Migration
 
         // Table attributes.
 
-        
+
 
         // Create Table jadwal
-        $this->dbforge->create_table("jadwal", TRUE, $attributes);
+        $this->dbforge->create_table("jadwal", TRUE);
 
     }
 
