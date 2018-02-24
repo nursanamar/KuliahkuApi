@@ -55,7 +55,7 @@ class Main extends MY_Controller {
 
 	public function welcome()
 	{
-		echo "<h1>KuliahKu API</h1>";
+		echo "<h1 align='center'>. . . . . .</h1>";
 	}
 
 	public function generator($table)
@@ -63,5 +63,41 @@ class Main extends MY_Controller {
 		$data = $this->getBody();
 		$res['status'] = $this->login->getData($table,$data);
 		$this->sendResponse($res);
+	}
+
+	public function xml($id,$sig)
+	{
+		$type = $this->input->get('type');
+		switch($type) {
+			case "inquiry":
+				$data  = array(
+			 	'response' => 'VA Static Response',
+			 	'va_number' => $id,
+			 	'amount' => 'xxx',
+			 	'cust_name' => 'sss'
+				);
+			break;
+			case "payment":
+				$data = array(
+					'response' => 'VA Static Response',
+				 	'va_number' => $id,
+				 	'amount' => $this->input->get("amount"),
+				 	'cust_name' => 'sss'
+				);
+			break;
+		}
+
+		$this->sendXml($data);
+
+	}
+
+	public function sendXml($data)
+	{
+		$xml = new SimpleXMLElement("<faspay/>");
+		foreach ($data as $key => $value) {
+		 $xml->addChild($key,$value);
+		}
+		$this->output->set_content_type('application/xml');
+		$this->output->set_output($xml->asXML());
 	}
 }
