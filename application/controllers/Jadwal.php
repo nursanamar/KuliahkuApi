@@ -26,8 +26,8 @@ class Jadwal extends MY_Controller
   {
     $data = $this->getBody();
     $respon = $this->jadwal_model->update($data['id'],$data['data']);
-    $wsData = array("action" => "update","msg" => "Jadwal mata kuliah di update");
-    $this->sendToSocket(json_encode($wsData),'/jadwal');
+    $fcmMsg = "Jadwal mata kuliah di update";
+    $this->sendToFcm("fcmMsg");
     $this->sendResponse($respon);
   }
 
@@ -38,14 +38,40 @@ class Jadwal extends MY_Controller
     $this->sendResponse($data);
   }
 
-  public function sendToSocket($data,$path)
+  public function sendToFcm($msg)
   {
-    // $data = json_encode($data);
-    $this->load->library('Wsclient');
-    $this->wsclient->init('localhost',$path,'localhost',false,4444);
-    $this->wsclient->connect();
-    $this->wsclient->send(WS_FRAME_TEXT, $data, 1);
-    $this->wsclient->disconnect();
+    $curl = curl_init();
+    $data = array(
+      "to" => "fc4yj9Ip6PQ:APA91bEFkY8O2fI0fgqNrk3j9qiM6b3cuSf851jDGOqIKdlDtRwS30xyyeJeRTknBsxUYsVXC3504iJoBHktAVfzG7j2fKXHKhS12fYKjr750TRpZVovBWEr-jxBb7gLg9zGS10Jmo1g",
+      "notification" => array(
+        "body" => $msg
+      )
+    );
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => json_encode($data),
+      CURLOPT_HTTPHEADER => array(
+        "authorization: key=AAAA9VOk1es:APA91bE0q3yKoYwrabecvkR1MtO_0D_gLUV1f2Ad7U6joRLWIVvXMErUoCbLnYnLSW0FbrMtFkteydoROILyzAz7mcXA--ahTFiSa0i2VNiGUD8rZD56-0y51xFF3SEiUKuCcke-yF6W",
+        "content-type: application/json",
+      ),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+      throw new Exception("Error Processing Request : ".$err, 1);
+    } else {
+      return true;
+    }
   }
 
   public function KuliahById($id)
