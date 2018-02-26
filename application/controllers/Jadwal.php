@@ -27,7 +27,7 @@ class Jadwal extends MY_Controller
     $data = $this->getBody();
     $respon = $this->jadwal_model->update($data['id'],$data['data']);
     $fcmMsg = "Jadwal mata kuliah di update";
-    $this->sendToFcm("fcmMsg");
+    $this->sendToFcm($fcmMsg);
     $this->sendResponse($respon);
   }
 
