@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Fcm
 {
 
-  public function sendNotif($data,$to)
+  public function sendNotif($to,$data)
   {
     $curl = curl_init();
     $data = array(
