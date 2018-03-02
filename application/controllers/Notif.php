@@ -19,15 +19,25 @@ class Notif extends MY_Controller
 
     $data = $this->getBody();
     $user = $this->payload;
-    $group = $this->notif_model->getGroupToken($user->id);
-    if ($group) {
-      $token = $this->fcm->addToGroup($group['idJadwal'],$data['token'],$group['token']);
-      $this->notif_model->updateToken($group['idJadwal'],$token['notification_key']);
+    $idJadwal = $this->notif_model->getIdJadwal($user->id)[0];
+    $token = $this->fcm->getToken($idJadwal['idJadwal']);
+    if ($token) {
+      $token = $this->fcm->addToGroup($idJadwal['idJadwal'],$data['token'],$token);
+      echo "add";
     }else{
-      $idJadwal = $this->notif_model->getIdJadwal($user->id)[0];
       $token = $this->fcm->createGroup($idJadwal['idJadwal'],$data['token']);
-      // var_dump($token['notification_key']);
-      $this->notif_model->saveToken($idJadwal['idJadwal'],$token['notification_key']);
+      echo "create";
+    }
+  }
+
+  public function removeToken()
+  {
+    $data = $this->getBody();
+    $user = $this->payload;
+    $idJadwal = $this->notif_model->getIdJadwal($user->id)[0];
+    $token = $this->fcm->getToken($idJadwal['idJadwal']);
+    if($token){
+      $this->fcm->removeFromGroup($data['token'],$idJadwal['idJadwal'],$token);
     }
   }
 }

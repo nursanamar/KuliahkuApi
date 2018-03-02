@@ -47,9 +47,8 @@ class Notif_model extends CI_Model
 
   public function getToken($idKuliah)
   {
-    $this->db->select('token');
-    $this->db->from('notif');
-    $this->db->join('jadwal','jadwal.idJadwal=notif.idJadwal','INNER');
+    $this->db->select('idJadwal');
+    $this->db->from('jadwal');
     $this->db->join('kuliah','kuliah.idKuliah=jadwal.idKuliah','INNER');
     $this->db->where('kuliah.idKuliah',$idKuliah);
 

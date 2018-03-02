@@ -28,7 +28,7 @@ class Jadwal extends MY_Controller
     $respon = $this->jadwal_model->update($data['id'],$data['data']);
     $fcmMsg = "Jadwal mata kuliah di update";
     $this->sendToFcm($data['id'],$fcmMsg);
-    $this->sendResponse($respon);
+    // $this->sendResponse($respon);
   }
 
   public function getKuliahList()
@@ -45,9 +45,12 @@ class Jadwal extends MY_Controller
     $data = array(
       "body" => $msg,
     );
-    $token = $this->notif_model->getToken($idKuliah);
-    foreach ($token as $key => $value) {
-      $this->fcm->sendNotif($value['token'],$data);
+    $idJadwal = $this->notif_model->getToken($idKuliah);
+    foreach ($idJadwal as $key => $value) {
+      $token = $this->fcm->getToken($value['idJadwal']);
+      if($token){
+        $this->fcm->sendNotif($token,$data);
+      }
     }
   }
 
