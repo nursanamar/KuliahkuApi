@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['token'] = 'notif/storeToken';
 $route['login']['post'] = 'main/login';
 $route['jadwal']['get'] = 'jadwal/getData';
 $route['jadwal']['put'] = 'jadwal/updateData';
