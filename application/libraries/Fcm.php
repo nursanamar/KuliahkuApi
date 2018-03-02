@@ -47,7 +47,7 @@ class Fcm
     $data = array(
       "operation" => "create",
       "notification_key_name" => $id,
-      "registration_ids" => [$token],
+      "registration_ids" => [ $token ],
     );
     $curl = curl_init();
 
@@ -62,9 +62,7 @@ class Fcm
       CURLOPT_POSTFIELDS => json_encode($data),
       CURLOPT_HTTPHEADER => array(
         "authorization: key=AAAA9VOk1es:APA91bE0q3yKoYwrabecvkR1MtO_0D_gLUV1f2Ad7U6joRLWIVvXMErUoCbLnYnLSW0FbrMtFkteydoROILyzAz7mcXA--ahTFiSa0i2VNiGUD8rZD56-0y51xFF3SEiUKuCcke-yF6W",
-        "cache-control: no-cache",
         "content-type: application/json",
-        "postman-token: 22976fe4-f9cc-dff2-1404-4a6a341d8ccb",
         "project_id: 1053670299115"
       ),
     ));
