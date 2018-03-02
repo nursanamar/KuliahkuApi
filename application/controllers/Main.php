@@ -67,22 +67,8 @@ class Main extends MY_Controller {
 
 	public function initTable()
 	{
-		$this->load->dbforge();
-		$field = array(
-			'idJadwal' => array(
-				'type' => "VARCHAR",
-				'constraint' => "100",
-			),
-			'token' => array(
-				'type' => "VARCHAR",
-				'constraint' => "225"
-			)
-		);
-
-		$this->dbforge->add_field($field);
-		$this->dbforge->create_table('notif',TRUE);
-
-		echo "sukses";
+		$token = $this->db->get('notif')->result_array();
+		var_dump($token);
 	}
 
 	public function xml($id,$sig)
