@@ -27,11 +27,11 @@ class Main extends MY_Controller {
 	 */
 	public function login()
 	{
+		$response = array();
 		try {
 		  $check = $this->validateLogin();
 		} catch (Exception $e) {
-      $this->output->set_status_header(400);
-			die();
+
 		}
     if($check){
       $token = $this->generateToken();
@@ -47,7 +47,7 @@ class Main extends MY_Controller {
     }else {
       $response = array(
         'status' => 'failed',
-        'desc' => "login failed, please check your pass",
+        'desc' => $e->getMessage(),
       );
     }
     $this->sendResponse($response);

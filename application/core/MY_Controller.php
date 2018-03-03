@@ -88,7 +88,7 @@ class MY_Controller extends CI_Controller {
 			$result = $this->login->chekUser($input['nim']);
 
 			if ($result === null) {
-				throw new Exception("User Not exists", 1);
+				throw new Exception("NIM tidak terdaftar atau salah", 1);
 			}else {
 				if (password_verify($input['pass'],$result['pass'])) {
 					$this->user = array(
@@ -97,7 +97,7 @@ class MY_Controller extends CI_Controller {
 					);
 					return true;
 				}else{
-					throw new Exception("Password Incorrect", 1);
+					throw new Exception("Password anda salah", 1);
 				}
 			}
 
