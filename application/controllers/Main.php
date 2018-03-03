@@ -28,6 +28,7 @@ class Main extends MY_Controller {
 	public function login()
 	{
 		$response = array();
+		$check = false;
 		try {
 		  $check = $this->validateLogin();
 		} catch (Exception $e) {
