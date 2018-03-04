@@ -18,7 +18,8 @@ class Jadwal extends MY_Controller
     $id = $this->payload->id;
     $hari = date('N');
     $data['today'] = $this->jadwal_model->today($id,$hari);
-    $data['tomorrow'] = $this->jadwal_model->today($id,((int)$hari)+1);
+    $besok = (((int)$hari) === 7) ? 1 : ((int)$hari) + 1;
+    $data['tomorrow'] = $this->jadwal_model->today($id,$besok);
     $this->sendResponse($data);
   }
 
