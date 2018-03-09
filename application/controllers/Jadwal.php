@@ -50,9 +50,9 @@ class Jadwal extends MY_Controller
       "sound" => "default",
       "wake_screen" => true,
       "lights" => true,
+      "content_available" => true,
     );
     $data = array(
-      "body" => $msg,
       "data" => array(
         "custom_notification" => $customNotif
       ),
