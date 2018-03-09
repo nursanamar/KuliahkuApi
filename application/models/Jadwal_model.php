@@ -17,7 +17,7 @@ class Jadwal_model extends CI_Model
     $this->db->join('dosen','kuliah.idDosen=dosen.idDosen','inner');
     $this->db->where('nim',$id);
     $this->db->where('`kuliah`.`hari`',$hari);
-    $this->db->order_by('jam',"ASC");
+    $this->db->order_by('`kuliah`.`jam`',"ASC");
     // $this->db->group_start()
     //   ->from('jadwal')
     //   ->group_start()
