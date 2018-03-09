@@ -54,7 +54,6 @@ class Jadwal extends MY_Controller
     );
     $data = array(
         "custom_notification" => $customNotif
-      )
     );
     $idJadwal = $this->notif_model->getToken($idKuliah);
     foreach ($idJadwal as $key => $value) {
