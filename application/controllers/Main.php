@@ -60,4 +60,26 @@ class Main extends MY_Controller {
 		$res['status'] = $this->login->getData($table,$data);
 		$this->sendResponse($res);
 	}
+
+	public function mahasiswa()
+	{
+		$data = $this->getBody();
+		$user = array();
+		$mahasiswa = array();
+		foreach ($data as $value) {
+			$user[] = array(
+				"nim" => $value['nim'],
+				"nama" => $value['nama'],
+				"pass" => password_hash($value['pass'],PASSWORD_DEFAULT),
+			);
+			$mahasiswa[] = array(
+				"nim" => $value['nim'],
+				"mahasiswa" => $value['nama'],
+				"idJadwal" => "JDL0001",
+			);
+		}
+		$res['user'] = $this->login->getData('user',$user);
+		$res['mahasiswa'] = $this->login->getData('mahasiswa',$mahasiswa);
+		$this->sendResponse($res);
+	}
 }
