@@ -66,45 +66,25 @@ class Main extends MY_Controller {
 		$this->sendResponse($res);
 	}
 
-	public function initTable()
+	public function mahasiswa()
 	{
-		$token = $this->db->get('notif')->result_array();
-		var_dump($token);
-	}
-
-	public function xml($id,$sig)
-	{
-		$type = $this->input->get('type');
-		switch($type) {
-			case "inquiry":
-				$data  = array(
-			 	'response' => 'VA Static Response',
-			 	'va_number' => $id,
-			 	'amount' => 'xxx',
-			 	'cust_name' => 'sss'
-				);
-			break;
-			case "payment":
-				$data = array(
-					'response' => 'VA Static Response',
-				 	'va_number' => $id,
-				 	'amount' => $this->input->get("amount"),
-				 	'cust_name' => 'sss'
-				);
-			break;
+		$data = $this->getBody();
+		$user = array();
+		$mahasiswa = array();
+		foreach ($data as $value) {
+			$user[] = array(
+				"nim" => $value['nim'],
+				"nama" => $value['nama'],
+				"pass" => password_hash($value['pass'],PASSWORD_DEFAULT),
+			);
+			$mahasiswa[] = array(
+				"nim" => $value['nim'],
+				"mahasiswa" => $value['nama'],
+				"idJadwal" => "JDL0001",
+			);
 		}
-
-		$this->sendXml($data);
-
-	}
-
-	public function sendXml($data)
-	{
-		$xml = new SimpleXMLElement("<faspay/>");
-		foreach ($data as $key => $value) {
-		 $xml->addChild($key,$value);
-		}
-		$this->output->set_content_type('application/xml');
-		$this->output->set_output($xml->asXML());
+		$res['user'] = $this->login->getData('user',$user);
+		$res['mahasiswa'] = $this->login->getData('mahasiswa',$mahasiswa);
+		$this->sendResponse($res);
 	}
 }
