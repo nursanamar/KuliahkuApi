@@ -43,8 +43,19 @@ class Jadwal extends MY_Controller
   {
     $this->load->model('notif_model');
     $this->load->library('fcm');
+    $customNotif = array(
+      "body"  => $msg,
+      "priority" => "high",
+      "show_in_foreground" =>  true,
+      "sound" => "default",
+      "wake_screen" => true,
+      "lights" => true,
+      "content_available" => true,
+    );
     $data = array(
-      "body" => $msg,
+      "data" => array(
+        "custom_notification" => $customNotif
+      ),
     );
     $idJadwal = $this->notif_model->getToken($idKuliah);
     foreach ($idJadwal as $key => $value) {
