@@ -13,7 +13,7 @@ class Fcm
     $curl = curl_init();
     $data = array(
       "to" => $to,
-      "notification" => $data,
+      "data" => $data,
     );
     curl_setopt_array($curl, array(
       CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
