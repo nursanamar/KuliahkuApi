@@ -6,7 +6,7 @@ class Main extends MY_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('Migration_lib',null,'migrat');
+		$this->load->library('Migration',null,'migrat');
 
 	}
 
@@ -56,8 +56,7 @@ class Main extends MY_Controller {
 
 	public function generator($table)
 	{
-		$data = $this->getBody();
-		$res['status'] = $this->login->getData($table,$data);
+		$res = $this->login->getData($table);
 		$this->sendResponse($res);
 	}
 
@@ -75,11 +74,21 @@ class Main extends MY_Controller {
 			$mahasiswa[] = array(
 				"nim" => $value['nim'],
 				"mahasiswa" => $value['nama'],
-				"idJadwal" => "JDL0001",
+				"idJadwal" => "JDL0002",
 			);
 		}
 		$res['user'] = $this->login->getData('user',$user);
 		$res['mahasiswa'] = $this->login->getData('mahasiswa',$mahasiswa);
 		$this->sendResponse($res);
+	}
+
+	public function migrateTable()
+	{
+		$this->migrat->version('20171226015120');
+		$this->migrat->version('20171226015622');
+		$this->migrat->version('20171226021854');
+		$this->migrat->version('20171226022016');
+		$this->migrat->version('20180101093614');
+		$this->migrat->version('20180219092922');
 	}
 }
