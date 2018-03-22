@@ -21,9 +21,14 @@ class User extends CI_Model
     return (isset($result[0])) ? $result[0] : null;
   }
 
-  public function getData($table,$data)
+  public function feedData($table,$data)
   {
     return $this->db->insert_batch($table,$data);
+  }
+
+  public function getData($table)
+  {
+    return $this->db->get($table)->result_array();
   }
 }
 

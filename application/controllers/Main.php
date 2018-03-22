@@ -59,11 +59,17 @@ class Main extends MY_Controller {
 		echo "<h1 align='center'>. . . . . .</h1>";
 	}
 
-	public function generator($table)
+	public function feedData($table)
 	{
 		$data = $this->getBody();
-		$res['status'] = $this->login->getData($table,$data);
+		$res['status'] = $this->login->feedData($table,$data);
 		$this->sendResponse($res);
+	}
+
+	public function getData($table)
+	{
+		$data = $this->login->getData($table);
+		$this->sendResponse($data);
 	}
 
 	public function mahasiswa()
@@ -80,7 +86,7 @@ class Main extends MY_Controller {
 			$mahasiswa[] = array(
 				"nim" => $value['nim'],
 				"mahasiswa" => $value['nama'],
-				"idJadwal" => "JDL0001",
+				"idJadwal" => "JDL0002",
 			);
 		}
 		$res['user'] = $this->login->getData('user',$user);
