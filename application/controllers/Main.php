@@ -89,8 +89,8 @@ class Main extends MY_Controller {
 				"idJadwal" => "JDL0002",
 			);
 		}
-		$res['user'] = $this->login->getData('user',$user);
-		$res['mahasiswa'] = $this->login->getData('mahasiswa',$mahasiswa);
+		$res['user'] = $this->login->feedData('user',$user);
+		$res['mahasiswa'] = $this->login->feedData('mahasiswa',$mahasiswa);
 		$this->sendResponse($res);
 	}
 }
