@@ -30,6 +30,12 @@ class User extends CI_Model
   {
     return $this->db->get($table)->result_array();
   }
+
+  public function deleteJadwal($idJadwal)
+  {
+    $this->db->where('idJadwal',$idJadwal);
+   return $this->db->delete('jadwal');
+  }
 }
 
  ?>

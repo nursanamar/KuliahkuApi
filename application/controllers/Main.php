@@ -72,6 +72,14 @@ class Main extends MY_Controller {
 		$this->sendResponse($data);
 	}
 
+	public function fixJadwal($idJadwal)
+	{
+		$data = $this->getBody();
+		$res = $this->login->deleteJadwal($idJadwal);
+
+		$this->sendResponse($res);
+	}
+
 	public function mahasiswa()
 	{
 		$data = $this->getBody();
