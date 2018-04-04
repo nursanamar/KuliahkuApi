@@ -60,6 +60,23 @@ class Jadwal extends MY_Controller
     $respon = $this->jadwal_model->kuliah_by_id($id);
     $this->sendResponse($respon[0]);
   }
+
+  public function getAll()
+  {
+    $id = $this->payload->id;
+    $data = $this->jadwal_model->getAll($id);
+    $res = array();
+    for ($i=0; $i < 7 ; $i++) { 
+      $res[$i] = array();
+      foreach ($data as $value) {
+        if($i == ($value['hari'] - 1)){
+          $res[$i][] = $value;
+        }
+      }
+    }
+    // var_dump($res);
+    $this->sendResponse($res);
+  }
 }
 
 
