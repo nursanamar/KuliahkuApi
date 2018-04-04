@@ -62,6 +62,21 @@ class Jadwal_model extends CI_Model
 
     return $this->db->get()->result_array();
   }
+
+  public function getAll($id)
+  {
+    
+    $this->db->select("`kuliah`.`idKuliah`,`matkul`.`nama` AS 'matkul',`dosen`.`nama` AS 'dosen',`kuliah`.`hari`,`kuliah`.`jam` AS 'time',`kuliah`.`ruangan` AS 'room',`kuliah`.`status`,`kuliah`.`idTugas`",false);
+    $this->db->from('mahasiswa');
+    $this->db->join('jadwal','mahasiswa.idJadwal=jadwal.idJadwal','inner');
+    $this->db->join('kuliah','jadwal.idKuliah=kuliah.idKuliah','inner');
+    $this->db->join('matkul','kuliah.idMatkul=matkul.idMatkul','inner');
+    $this->db->join('dosen','kuliah.idDosen=dosen.idDosen','inner');
+    $this->db->where('nim',$id);
+    $this->db->order_by('hari',"ASC");
+
+    return $this->db->get()->result_array();
+  }
 }
 
 ?>

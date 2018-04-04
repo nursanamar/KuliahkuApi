@@ -6,7 +6,7 @@ class Main extends MY_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('Migration_lib',null,'migrat');
+		$this->load->library('Migration',null,'migrat');
 
 	}
 
@@ -74,9 +74,7 @@ class Main extends MY_Controller {
 
 	public function fixJadwal($idJadwal)
 	{
-		$data = $this->getBody();
-		$res = $this->login->deleteJadwal($idJadwal);
-
+		$res = $this->login->getData($table);
 		$this->sendResponse($res);
 	}
 
@@ -100,5 +98,15 @@ class Main extends MY_Controller {
 		$res['user'] = $this->login->feedData('user',$user);
 		$res['mahasiswa'] = $this->login->feedData('mahasiswa',$mahasiswa);
 		$this->sendResponse($res);
+	}
+
+	public function migrateTable()
+	{
+		$this->migrat->version('20171226015120');
+		$this->migrat->version('20171226015622');
+		$this->migrat->version('20171226021854');
+		$this->migrat->version('20171226022016');
+		$this->migrat->version('20180101093614');
+		$this->migrat->version('20180219092922');
 	}
 }
