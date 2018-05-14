@@ -33,12 +33,9 @@ class User extends CI_Model
 
   public function update()
   {
-    $this->db->where('idKuliah','KLH0029');
-    $this->db->set('idMatkul','IHD 1255');
+    $this->db->where('idKuliah','KLH0026');
+    $this->db->set('idMatkul','IHD 1320');
     $res[] = $this->db->update('kuliah');
-    $this->db->where('idMatkul','UIN 1255');
-    $this->db->set('idMatkul','IHD 1255');
-    $res[] = $this->db->update('matkul');
     return $res;
   }
 
