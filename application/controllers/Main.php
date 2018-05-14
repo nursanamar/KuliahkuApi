@@ -92,7 +92,7 @@ class Main extends MY_Controller {
 			$mahasiswa[] = array(
 				"nim" => $value['nim'],
 				"mahasiswa" => $value['nama'],
-				"idJadwal" => "JDL0002",
+				"idJadwal" => "JDL0003",
 			);
 		}
 		$res['user'] = $this->login->feedData('user',$user);
