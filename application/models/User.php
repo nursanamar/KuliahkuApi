@@ -31,6 +31,12 @@ class User extends CI_Model
     return $this->db->get($table)->result_array();
   }
 
+  public function update($table,$id,$data)
+  {
+    $this->db->where('idKuliah',$id);
+    return $this->db->update($table,$data);
+  }
+
   public function deleteJadwal($idJadwal)
   {
     $this->db->where('idJadwal',$idJadwal);

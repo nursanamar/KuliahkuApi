@@ -72,6 +72,14 @@ class Main extends MY_Controller {
 		$this->sendResponse($data);
 	}
 
+	public function editData($tabel,$id)
+	{
+		$data = $this->getBody();
+		$res['update'] = $this->login->update($table,$id,$data);
+		$this->sendResponse($res);
+
+	}
+
 	public function fixJadwal($idJadwal)
 	{
 		$res = $this->login->getData($table);
