@@ -72,10 +72,9 @@ class Main extends MY_Controller {
 		$this->sendResponse($data);
 	}
 
-	public function editData($tabel,$id)
+	public function editData()
 	{
-		$data = $this->getBody();
-		$res['update'] = $this->login->update($table,$id,$data);
+		$res['update'] = $this->login->update();
 		$this->sendResponse($res);
 
 	}

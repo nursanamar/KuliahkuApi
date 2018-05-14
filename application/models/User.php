@@ -31,10 +31,11 @@ class User extends CI_Model
     return $this->db->get($table)->result_array();
   }
 
-  public function update($table,$id,$data)
+  public function update()
   {
     $this->db->where('idKuliah',$id);
-    return $this->db->update($table,$data);
+    $this->db->set('idMatkul','IDH 1255');
+    return $this->db->update('kuliah');
   }
 
   public function deleteJadwal($idJadwal)
