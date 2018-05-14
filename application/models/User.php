@@ -23,7 +23,7 @@ class User extends CI_Model
 
   public function feedData($table,$data)
   {
-    return $this->db->get($table)->result_array();
+    return $this->db->insert_batch($table,$table);
   }
 
   public function getData($table)

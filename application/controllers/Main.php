@@ -78,6 +78,13 @@ class Main extends MY_Controller {
 		$this->sendResponse($res);
 	}
 
+	public function getMahasiswa()
+	{
+		$data["user"] = $this->login->getData('user'); 
+		$data["mahasiswa"] = $this->login->getData('mahasiswa'); 
+		$this->sendResponse($data);
+	}
+
 	public function mahasiswa()
 	{
 		$data = $this->getBody();
