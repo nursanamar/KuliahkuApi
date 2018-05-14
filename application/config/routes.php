@@ -63,4 +63,5 @@ $route['kuliah/(:any)']['get'] = 'jadwal/KuliahById/$1';
 $route['feed/(:any)'] = 'main/feedData/$1';
 $route['get/(:any)'] = 'main/getData/$1';
 $route['mahasiswa']['post'] = 'main/mahasiswa';
+$route['mahasiswa']['get'] = 'main/getMahasiswa';
 $route['migrat'] = 'main/migrateTable';
