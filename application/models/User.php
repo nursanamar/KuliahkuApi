@@ -33,7 +33,7 @@ class User extends CI_Model
 
   public function update()
   {
-    $this->db->where('idKuliah',$id);
+    $this->db->where('idKuliah','KLH0029');
     $this->db->set('idMatkul','IDH 1255');
     return $this->db->update('kuliah');
   }
