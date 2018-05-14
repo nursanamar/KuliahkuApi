@@ -35,7 +35,11 @@ class User extends CI_Model
   {
     $this->db->where('idKuliah','KLH0029');
     $this->db->set('idMatkul','IHD 1255');
-    return $this->db->update('kuliah');
+    $res[] = $this->db->update('kuliah');
+    $this->db->where('idMatkul','UIN 1255');
+    $this->db->set('idMatkul','IHD 1255');
+    $res[] = $this->db->update('matkul');
+    return $res;
   }
 
   public function deleteJadwal($idJadwal)
