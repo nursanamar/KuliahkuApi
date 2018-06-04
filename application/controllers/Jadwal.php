@@ -31,7 +31,7 @@ class Jadwal extends MY_Controller
     $fcmMsg = "Mata Kuliah " . $respon[0]['matkul'] . " di ubah ke ";
     if (isset($data['data']['hari'])) {
         $hari = array("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu");
-        $fcmMsg .= "hari " . $hari[$data['data']['hari']] . " ";
+        $fcmMsg .= "hari " . $hari[($data['data']['hari'] - 1)]. " ";
     }
     if (isset($data['data']['jam'])) {
         $fcmMsg .= "jam " . $data['data']['jam'] . " ";
