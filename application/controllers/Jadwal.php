@@ -27,7 +27,23 @@ class Jadwal extends MY_Controller
   {
     $data = $this->getBody();
     $respon = $this->jadwal_model->update($data['id'],$data['data']);
-    $fcmMsg = "Jadwal mata kuliah di update";
+    
+    if (isset($data['data']['status'])) {
+      if ($data['data']['status'] == "Masuk") {
+          $fcmMsg = "Mata Kuliah " . $respon[0]['matkul'] . " jadi Masuk";
+      } else {
+          $fcmMsg = "Mata Kuliah " . $respon[0]['matkul'] . " Batal Masuk";
+      }
+    } else {
+      $fcmMsg = "Mata Kuliah " . $respon[0]['matkul'] . " di ubah ke ";
+      if (isset($data['data']['hari'])) {
+          $hari = array("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu");
+          $fcmMsg .= "hari " . $hari[$data['data']['hari']] . " ";
+      }
+      if (isset($data['data']['jam'])) {
+          $fcmMsg .= "jam " . $data['data']['jam'] . " ";
+      }
+    }
     $this->sendToFcm($data['id'],$fcmMsg);
     $this->sendResponse($respon);
   }
