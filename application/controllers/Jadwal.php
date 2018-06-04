@@ -61,6 +61,7 @@ class Jadwal extends MY_Controller
     $this->load->library('fcm');
     $customNotif = array(
       "body"  => $msg,
+      "big_text" => $msg,
       "priority" => "high",
       "show_in_foreground" =>  true,
       "sound" => "default",
