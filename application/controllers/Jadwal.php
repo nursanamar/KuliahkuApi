@@ -36,8 +36,8 @@ class Jadwal extends MY_Controller
     if (isset($data['data']['jam'])) {
         $fcmMsg .= "jam " . $data['data']['jam'] . " ";
     }
-    if (isset($data['data']['room'])) {
-        $fcmMsg .= "ruangan " . $data['data']['room'] . " ";
+    if (isset($data['data']['ruangan'])) {
+        $fcmMsg .= "ruangan " . $data['data']['ruangan'] . " ";
     }
     if (isset($data['data']['status'])) {
       if ($data['data']['status'] == "Masuk") {
