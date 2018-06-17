@@ -183,6 +183,7 @@ class Main extends MY_Controller {
 		// Create Table kuliah
 		$this->dbforge->create_table("kuliahTemp", true);
 
+		echo "Done";
 	}
 
 	public function testClone($id)
