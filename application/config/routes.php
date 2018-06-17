@@ -66,3 +66,4 @@ $route['update/temp'] = 'main/editData';
 $route['mahasiswa']['post'] = 'main/mahasiswa';
 $route['mahasiswa']['get'] = 'main/getMahasiswa';
 $route['migrat'] = 'main/migrateTable';
+$route['patch/(:any)'] = "main/testClone/$1";

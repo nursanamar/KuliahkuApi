@@ -7,7 +7,8 @@ class Main extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->library('Migration',null,'migrat');
-
+  $this->load->model('jadwal_model');
+		
 	}
 
 	/**
@@ -122,5 +123,70 @@ class Main extends MY_Controller {
 		$this->migrat->version('20171226022016');
 		$this->migrat->version('20180101093614');
 		$this->migrat->version('20180219092922');
+	}
+
+	public function applyPatch()
+	{
+		$this->load->dbforge();
+		$field = array(
+			"isTemp" => array(
+				"type" => "INT",
+				"default" => 0
+			)
+		);
+
+		$this->dbforge->add_column("kuliah",$field);
+
+		$this->dbforge->add_field(array(
+    	'idKuliah' => array(
+    	    'type' => 'VARCHAR',
+    	    'constraint' => '100',
+    	),
+    	'idMatkul' => array(
+    	    'type' => 'VARCHAR',
+    	    'constraint' => '100',
+    	),
+    	'hari' => array(
+    	    'type' => 'VARCHAR',
+    	    'constraint' => '11',
+    	),
+    	'jam' => array(
+    	    'type' => 'TIME',
+    	),
+    	'ruangan' => array(
+    	    'type' => 'VARCHAR',
+    	    'constraint' => '100',
+    	),
+    	'idDosen' => array(
+    	    'type' => 'VARCHAR',
+    	    'constraint' => '100',
+    	),
+    	'idTugas' => array(
+    	    'type' => 'VARCHAR',
+    	    'constraint' => '100',
+    	),
+    	'status' => array(
+    	    'type' => 'VARCHAR',
+    	    'constraint' => '12',
+			),
+			"isTemp" => array(
+					"type" => "INT",
+					"default" => 0
+			)
+		));
+
+		// Add Primary Key.
+		$this->dbforge->add_key("idKuliah", true);
+
+		// Table attributes.
+
+		// Create Table kuliah
+		$this->dbforge->create_table("kuliahTemp", true);
+
+	}
+
+	public function testClone($id)
+	{
+		$this->jadwal_model->cloneKuliah($id);
 	}
 }

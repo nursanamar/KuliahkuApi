@@ -38,6 +38,13 @@ class Jadwal_model extends CI_Model
     return $this->kuliah_by_id($id);
   }
 
+  public function cloneKuliah($id)
+  {
+    $this->db->where('idKuliah',$id);
+    $copy = $this->db->get('kuliah')->result_array();
+    $this->db->insert("kuliahTemp",$copy[0]);
+  }
+
   public function kuliah_by_id($id)
   {
     $this->db->select('matkul.nama AS matkul, dosen.nama AS dosen,kuliah.hari,kuliah.jam AS time,kuliah.ruangan AS room,kuliah.status,"tugas"."idTugas"');
