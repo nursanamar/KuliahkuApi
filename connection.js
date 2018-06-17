@@ -82,4 +82,8 @@ const cronConfig = {
     timeZone: 'Asia/Makassar',
 }
 
+setInterval(() => {
+    console.log("run");
+},"3000");
+
 const ch = new Cron.CronJob(cronConfig);
