@@ -84,6 +84,6 @@ const cronConfig = {
 
 setInterval(() => {
     console.log("run");
-},"3000");
+},"86400000");
 
 const ch = new Cron.CronJob(cronConfig);
